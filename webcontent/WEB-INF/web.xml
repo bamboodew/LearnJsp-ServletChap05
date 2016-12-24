@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>HeadFirstJspServletChap05</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>forwardServlet</servlet-name>
+  	<servlet-class>com.java1234.web.ForwardServlet</servlet-class> <!-- 加载类class -->
+  </servlet>
+  <servlet-mapping> <!-- 映射 -->
+  	<servlet-name>forwardServlet</servlet-name>
+  	<!-- 第二步：通过servlet的name，找servlet中相同名字的name，再连接对应的java后台class  -->
+  	<url-pattern>/forward</url-pattern>
+  	<!-- 第一步：请求——网址直接输入http://localhost:8080/HeadFirstJspServletChap05/******-->
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>loginServlet</servlet-name> <!-- 第7步 -->
+  	<servlet-class>com.java1234.web.LoginServlet</servlet-class> <!-- 第8步：加载类class：LoginServlet -->
+  </servlet>
+  <servlet-mapping> <!-- 映射 -->
+  	<servlet-name>loginServlet</servlet-name>
+  	<!-- 第6步：通过servlet的name，找servlet中相同名字的name，再连接对应的java后台class  -->
+  	<url-pattern>/login</url-pattern>
+  	<!-- 第5步：请求——网址直接输入http://localhost:8080/HeadFirstJspServletChap05/******-->
+  </servlet-mapping>
+  
+  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>com.java1234.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>/*</url-pattern> <!-- 过滤所有HeadFirstJspServletChap05下的网页请求 -->
+  </filter-mapping>
+  
+</web-app>
