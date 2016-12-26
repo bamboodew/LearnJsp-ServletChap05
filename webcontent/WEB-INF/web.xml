@@ -38,7 +38,8 @@
   </filter>
   <filter-mapping>
   	<filter-name>loginFilter</filter-name>
-  	<url-pattern>/*</url-pattern> <!-- 过滤所有HeadFirstJspServletChap05下的网页请求 -->
+  	<url-pattern>/*</url-pattern>
+  	<!-- 第1步：过滤所有HeadFirstJspServletChap05下的网页请求，后台自动跳转至LoginFilter.java -->
   </filter-mapping>
   
 </web-app>

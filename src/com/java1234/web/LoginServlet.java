@@ -41,16 +41,20 @@ public class LoginServlet extends HttpServlet{
 			User currentUser=userDao.login(con, user); //第18步：运行登录UserDao类封装的login方法，登录获取临时“实例user”
 			
 			if(currentUser==null){ //第19步：检查临时user是否为空？
-				System.out.println("No");
-				request.setAttribute("error", "用户名或者密码错误！"); //第20步：为空——请求变request的值变成为error代号
+				System.out.println("No：登录失败！！！");
+				
+				request.setAttribute("error", "用户名或者密码错误！"); //第20步：为空——请求变request的值变成为error代号，跳转至jsp完成。
 				request.setAttribute("userName", userName);
 				request.setAttribute("password", password);
 				request.getRequestDispatcher("login.jsp").forward(request, response); //第21步：响应结果。
+				
+				System.out.println("响应结果：用户名或者密码错误！——程序结束！");
 			}else{ 
-				System.out.println("Yes");
+				System.out.println("Yes：登录成功！！！");
 				HttpSession session=request.getSession(); //第20步：request请求，获取session会话的通讯结果。
 				session.setAttribute("currentUser", currentUser); //给会话赋值
 				response.sendRedirect("main.jsp"); //第21步：响应：重定向
+				System.out.println("响应：重定向至main.jsp——并刷新页面！");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
